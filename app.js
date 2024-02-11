@@ -120,7 +120,7 @@ document.getElementById('logOrdersBtn').addEventListener('click', function() {
         }
     
         var encodedMessage = encodeURIComponent(message);
-        var phoneNumber = '+6282135459880'; // Nomor WhatsApp tujuan
+        var phoneNumber = '+6281229982755'; // Nomor WhatsApp tujuan
         var whatsappURL = 'https://wa.me/' + phoneNumber + '?text=' + encodedMessage;
         window.open(whatsappURL, '_blank');
     }
