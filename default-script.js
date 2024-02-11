@@ -19,6 +19,7 @@ let quantityNasiTim_half = 0;
 let quantityNasiTim_1 = 0;
 let quantitySup = 0;
 let quantityJusBuah = 0;
+let quantityPaketBuburFrozen = 0;
 
 // Fungsi untuk menyimpan data input quantity ke dalam variabel
 function saveQuantities() {
@@ -30,6 +31,7 @@ function saveQuantities() {
     quantityNasiTim_1 = parseInt(document.getElementById('quantity-nasitim-1').value) || 0;
     quantitySup = parseInt(document.getElementById('quantity-sup').value) || 0;
     quantityJusBuah = parseInt(document.getElementById('quantity-jusbuah').value) || 0;
+    quantityPaketBuburFrozen = parseInt(document.getElementById('quantity-paketbuburfrozen').value) || 0;
 }
 
 // Memanggil fungsi saveQuantities setiap kali nilai input berubah
@@ -47,9 +49,10 @@ function logData() {
     console.log("Quantity Nasi Tim (1 porsi):", quantityNasiTim_1);
     console.log("Quantity Sup:", quantitySup);
     console.log("Quantity Jus Buah:", quantityJusBuah);
+    console.log("Quantity Paket Bubur Frozen:", quantityPaketBuburFrozen);
 
     // Membangun URL dengan parameter variabel
-    const url = `order.html?packet=${packet}&buburA_half=${quantityBuburA_half}&buburA_1=${quantityBuburA_1}&buburB_half=${quantityBuburB_half}&buburB_1=${quantityBuburB_1}&nasitim_half=${quantityNasiTim_half}&nasitim_1=${quantityNasiTim_1}&sup=${quantitySup}&jusbuah=${quantityJusBuah}`;
+    const url = `order.html?packet=${packet}&buburA_half=${quantityBuburA_half}&buburA_1=${quantityBuburA_1}&buburB_half=${quantityBuburB_half}&buburB_1=${quantityBuburB_1}&nasitim_half=${quantityNasiTim_half}&nasitim_1=${quantityNasiTim_1}&sup=${quantitySup}&jusbuah=${quantityJusBuah}&paketbuburfrozen=${quantityPaketBuburFrozen}`;
 
     // Mengarahkan halaman ke URL yang dibangun
     window.location.href = url;
