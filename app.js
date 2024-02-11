@@ -373,10 +373,10 @@ function getMenuForDay(day) {
             { name: 'Madu', price: 75000, defaultQuantity: 0 },
         ],
         [ // Thursday (4)
-            { name: '<sup>1</sup>&frasl;<sub>2</sub> Bubur jagung + keju', price: 2500, defaultQuantity: quantityBuburA_half },
-            { name: '1 Bubur jagung + keju', price: 5000, defaultQuantity: quantityBuburA_1 },
             { name: '<sup>1</sup>&frasl;<sub>2</sub> Bubur ikan dory + tomat', price: 2500, defaultQuantity: quantityBuburB_half },
             { name: '1 Bubur ikan dory + tomat', price: 5000, defaultQuantity: quantityBuburB_1 },
+            { name: '<sup>1</sup>&frasl;<sub>2</sub> Bubur jagung + keju', price: 2500, defaultQuantity: quantityBuburA_half },
+            { name: '1 Bubur jagung + keju', price: 5000, defaultQuantity: quantityBuburA_1 },
             { name: '<sup>1</sup>&frasl;<sub>2</sub> Nasi tim ikan dory', price: 2500, defaultQuantity: quantityNasiTim_half },
             { name: '1 Nasi tim ikan dory', price: 5000, defaultQuantity: quantityNasiTim_1 },
             { name: 'Sup ikan kakap', price: 20000, defaultQuantity: quantitySup },
@@ -583,7 +583,7 @@ function calculateTotalAmount(finalTotal) {
     // output nilai totalAmoun
     var finalMethodElement = document.getElementById('finalMethod');
     if (finalMethodElement) {
-        finalMethodElement.textContent = "Total Amount: Rp" + totalAmount;
+        finalMethodElement.textContent = "Total Biaya Pemesanan: Rp" + totalAmount;
     } else {
         console.error("Elemen '#finalMethod' tidak ditemukan.");
     }
