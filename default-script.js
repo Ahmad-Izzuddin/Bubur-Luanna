@@ -49,7 +49,7 @@ function logData() {
     console.log("Quantity Jus Buah:", quantityJusBuah);
 
     // Membangun URL dengan parameter variabel
-    const url = `index.html?packet=${packet}&buburA_half=${quantityBuburA_half}&buburA_1=${quantityBuburA_1}&buburB_half=${quantityBuburB_half}&buburB_1=${quantityBuburB_1}&nasitim_half=${quantityNasiTim_half}&nasitim_1=${quantityNasiTim_1}&sup=${quantitySup}&jusbuah=${quantityJusBuah}`;
+    const url = `order.html?packet=${packet}&buburA_half=${quantityBuburA_half}&buburA_1=${quantityBuburA_1}&buburB_half=${quantityBuburB_half}&buburB_1=${quantityBuburB_1}&nasitim_half=${quantityNasiTim_half}&nasitim_1=${quantityNasiTim_1}&sup=${quantitySup}&jusbuah=${quantityJusBuah}`;
 
     // Mengarahkan halaman ke URL yang dibangun
     window.location.href = url;
