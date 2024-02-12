@@ -103,6 +103,8 @@ document.getElementById('logOrdersBtn').addEventListener('click', function() {
             message += '⚬ _*Metode pemesanan: Outlet*_\n';
         } else if (selectedMethod === 'delivery') {
             message += '⚬ _*Metode pemesanan: Delivery*_\n';
+        } else if (selectedMethod === cod) {
+            message += '⚬ _*Metode pemesanan: COD*_\n';
         } else {
             message += '*Pilih metode pemesanan*\n';
         }
@@ -114,7 +116,7 @@ document.getElementById('logOrdersBtn').addEventListener('click', function() {
         var finalMethodElement = document.getElementById('finalMethod');
         if (finalMethodElement) {
             var totalAmountText = finalMethodElement.textContent.match(/Rp(\d+(\.\d+)*)/)[1];
-            message += '_________________________'
+            message += '______________________________'
             message += '⚝ *Total: Rp' + totalAmountText + '* ⚝' + '\n'; // Menambahkan pesan dari finalMethodElement ke dalam pesan WhatsApp
         } else {
             console.error("Elemen '#finalMethod' tidak ditemukan.");
