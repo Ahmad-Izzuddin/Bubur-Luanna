@@ -88,7 +88,7 @@ document.getElementById('logOrdersBtn').addEventListener('click', function() {
             var currentDate = new Date(parseInt(dayIndex));
             message += '➲ ' + currentDate.toLocaleDateString() + ':\n';
             ordersByDay[dayIndex].orders.forEach(function(order) {
-                message += '    ✧' + order.name + '\n' + '          ' + order.quantity + ' Porsi x ' + order.price + ' = Rp' + order.total + '\n';
+                message += '    ✧' + order.name + '\n' + '          ' + order.quantity + ' x ' + order.price + ' = Rp' + order.total + '\n';
             });
             message += '\n';
         });
@@ -114,6 +114,7 @@ document.getElementById('logOrdersBtn').addEventListener('click', function() {
         var finalMethodElement = document.getElementById('finalMethod');
         if (finalMethodElement) {
             var totalAmountText = finalMethodElement.textContent.match(/Rp(\d+(\.\d+)*)/)[1];
+            message += '_________________________'
             message += '⚝ *Total: Rp' + totalAmountText + '* ⚝' + '\n'; // Menambahkan pesan dari finalMethodElement ke dalam pesan WhatsApp
         } else {
             console.error("Elemen '#finalMethod' tidak ditemukan.");
@@ -231,8 +232,6 @@ function displayMenus(selectedDate) {
 
     updateOrderMethodCost();
 }
-
-
 
 //------------------------------------------------------------------------------------------------------------
 
@@ -353,8 +352,8 @@ function getMenuForDay(day) {
             { name: '1 Bubur ayam kampung + wortel', price: 5000, defaultQuantity: quantityBuburA_1 },
             { name: '<sup>1</sup>&frasl;<sub>2</sub> Bubur daging kelinci + buah bit', price: 2500, defaultQuantity: quantityBuburB_half },
             { name: '1 Bubur daging kelinci + buah bit', price: 5000, defaultQuantity: quantityBuburB_1 },
-            { name: '<sup>1</sup>&frasl;<sub>2</sub> Nasi tim daging sapi', price: 2500, defaultQuantity: quantityNasiTim_half },
-            { name: '1 Nasi tim daging sapi', price: 5000, defaultQuantity: quantityNasiTim_1 },
+            { name: '<sup>1</sup>&frasl;<sub>2</sub> Nasi tim ikan salmon', price: 5000, defaultQuantity: quantityNasiTim_half },
+            { name: '1 Nasi tim ikan salmon', price: 10000, defaultQuantity: quantityNasiTim_1 },
             { name: 'Sup daging sapi', price: 8000, defaultQuantity: quantitySup },
             { name: 'Jus buah', price: 5000, defaultQuantity: quantityJusBuah },
             { name: 'Paket bubur frozen', price: 30000, defaultQuantity: quantityPaketBuburFrozen },
@@ -490,16 +489,21 @@ function calculateOrderMethodCost(totalDays) {
 
 function displayOrderFee(selectedDate) {
     var orderSectionDiv = document.getElementById('orderMethod');
+    var params = new URLSearchParams(window.location.search);
+    var packet = params.get('packet');
+    var codOption = packet === '1' ? '<option value="cod">COD</option>' : '';
+
     orderSectionDiv.innerHTML = `
         <select id="orderMethod">
             <option value="">Pilih Metode Pemesanan</option>
             <option value="outlet">Outlet</option>
             <option value="delivery">Delivery</option>
+            ${codOption}
         </select>
         <p id="order-cost">Pilih metode pemesanan</p>
-
     `;
 }
+
 
 // Fungsi untuk menghitung biaya metode pemesanan
 function updateOrderMethodCost() {
@@ -507,7 +511,7 @@ function updateOrderMethodCost() {
     var totalDays = getTotalDaysWithQuantity();
     var orderMethodCost = 0;
 
-    if (method === 'delivery') {
+    if (method === 'delivery' || method === 'cod') {
         if (totalDays < 7) {
             orderMethodCost = 2000 * totalDays;
             document.getElementById('order-cost').textContent = 'Biaya Ongkir: Rp2000 x ' + totalDays + ' = Rp' + orderMethodCost;
