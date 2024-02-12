@@ -102,9 +102,9 @@ document.getElementById('logOrdersBtn').addEventListener('click', function() {
         if (selectedMethod === 'outlet') {
             message += '⚬ _*Metode pemesanan: Outlet*_\n';
         } else if (selectedMethod === 'delivery') {
-            message += '⚬ _*Metode pemesanan: Delivery*_\n';
-        } else if (selectedMethod === cod) {
-            message += '⚬ _*Metode pemesanan: COD*_\n';
+            message += '⚬ _*Metode pemesanan: Delivery transfer*_\n';
+        } else if (selectedMethod === 'cod') {
+            message += '⚬ _*Metode pemesanan: Delivery COD*_\n';
         } else {
             message += '*Pilih metode pemesanan*\n';
         }
@@ -116,7 +116,7 @@ document.getElementById('logOrdersBtn').addEventListener('click', function() {
         var finalMethodElement = document.getElementById('finalMethod');
         if (finalMethodElement) {
             var totalAmountText = finalMethodElement.textContent.match(/Rp(\d+(\.\d+)*)/)[1];
-            message += '______________________________'
+            message += '_____________________________________________\n'
             message += '⚝ *Total: Rp' + totalAmountText + '* ⚝' + '\n'; // Menambahkan pesan dari finalMethodElement ke dalam pesan WhatsApp
         } else {
             console.error("Elemen '#finalMethod' tidak ditemukan.");
@@ -491,17 +491,16 @@ function calculateOrderMethodCost(totalDays) {
 
 function displayOrderFee(selectedDate) {
     var orderSectionDiv = document.getElementById('orderMethod');
-    var params = new URLSearchParams(window.location.search);
-    var packet = params.get('packet');
-    var codOption = packet === '1' ? '<option value="cod">COD</option>' : '';
+    var codOption = packet === '1' ? '<option value="cod">Delivery COD</option>' : '';
 
     orderSectionDiv.innerHTML = `
         <select id="orderMethod">
             <option value="">Pilih Metode Pemesanan</option>
             <option value="outlet">Outlet</option>
-            <option value="delivery">Delivery</option>
+            <option value="delivery">Delivery Transfer</option>
             ${codOption}
         </select>
+        
         <p id="order-cost">Pilih metode pemesanan</p>
     `;
 }
